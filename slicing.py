@@ -9,3 +9,4 @@ print(s[3:7]) #dal carattere 3 a 7 escluso
 print(s[1:-1]) #dal carattere 1 a -1 escluso
 print(s[1:]) #dal carattere 1 fino alla fine
 print(s[:-1]) #tutta la stringa tranne ultimo carattere
+print(s[::-1]) #stampa al contrario
