@@ -1,12 +1,7 @@
 import random
 
-def spostamento():
-    lista=[1,-1]
-    return random.choice(lista)
-
-def calcolaSpostamenti():
-    sec = 432000
-    lista_spost=[spostamento() for _ in range(0,sec)]
+def calcolaSpostamenti(sec=432000,lista=[1,-1]):
+    lista_spost=[random.choice(lista) for _ in range(0,sec)]
     print(lista_spost)
     lunghezza=0
     for val in lista_spost:
@@ -14,7 +9,9 @@ def calcolaSpostamenti():
     print(lunghezza)
 
 def main():
-    calcolaSpostamenti()
+    sec = 432000
+    lista=[1,-1]
+    calcolaSpostamenti(lista=[3,-3]) #passaggio di parametri con valore di def
 
 if __name__ == "__main__":
     main()
