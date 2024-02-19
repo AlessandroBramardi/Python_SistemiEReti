@@ -11,26 +11,26 @@ class Tubi_c:
 
     def avanza_disegna(self):
         self.x -= vel_avanzamento
-        schermo.blit(tubo_giu, (self.x, self.y + 210))
+        schermo.blit(tubo_giu, (self.x, self.y + 190)) #tentativi (da rivedere)
         schermo.blit(tubo_su, (self.x, self.y - 210))
 
     def collisione(self, bird, uccellox, uccelloy):
-        margine = 5
+        margine = 6
         uccello_lato_dx = uccellox + bird.get_width() - margine
         uccello_lato_sx = uccellox + margine
         tubo_lato_dx = self.x + tubo_giu.get_width()
         tubo_lato_sx = self.x + margine
         uccello_lato_su = uccelloy + margine
         uccello_lato_giu = uccelloy + bird.get_height() - margine
-        tubo_lato_su = self.y + 110
-        tubo_lato_giu = self.y + 210
+        tubo_lato_su = self.y + 100
+        tubo_lato_giu = self.y + 200
         if uccello_lato_dx > tubo_lato_sx and uccello_lato_sx < tubo_lato_dx:
             if uccello_lato_su < tubo_lato_su or uccello_lato_giu > tubo_lato_giu:
                 perso()
 
 def init():
-    global uccellox, uccelloy, uccello_vel, punteggio
-    global basex
+    #global uccellox, uccelloy, uccello_vel, punteggio
+    #global basex
     global tubi
     tubi = []
     tubi.append(Tubi_c())
@@ -46,7 +46,7 @@ def disegna_ogg(schermo, sfondo, bird, base):
     schermo.blit(bird, (uccellox, uccelloy))
     schermo.blit(base, (basex, 400))
 
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font(None, 30)
     testo_punteggio = font.render(f"Punteggio: {punteggio}", True, (255, 255, 255))
     schermo.blit(testo_punteggio, (10, 10))
 
@@ -75,7 +75,7 @@ gameover = pygame.image.load('gioco_py/gameover.png')
 tubo_giu = pygame.image.load('gioco_py/tubo.png')
 tubo_su = pygame.transform.flip(tubo_giu, False, True)
 
-schermo = pygame.display.set_mode((288, 512))
+schermo = pygame.display.set_mode((300, 500))
 fps = 50
 vel_avanzamento = 3
 init()
@@ -95,7 +95,7 @@ while True:
     if tubi[-1].x < 150 and not tubi[-1].attraversato:
         tubi[-1].attraversato = True
         punteggio += 1
-        tubi.append(Tubi_c())  # Aggiungi un nuovo tubo quando il primo è attraversato
+        tubi.append(Tubi_c()) 
 
     for i in tubi:
         i.collisione(bird, uccellox, uccelloy)
