@@ -14,7 +14,7 @@ def contaNucleotidi(stringa):
 def contaNucleotidi2(stringa):
     dizNucleoditi={"A": 0, "C":0,"G":0,"T":0}
     for char in stringa:
-        dizNucleoditi[char] +=1
+        dizNucleoditi[char] = dizNucleoditi[char]+1
     return dizNucleoditi
 def contaNucleotidi3(stringa, nucleotide):
     return len([x for x in stringa if x == nucleotide ])
@@ -27,7 +27,7 @@ def cercaProteinaSpike(stringa):
     return -1
 
 def main():
-    file = open("covid-19_gen1.txt","r")
+    file = open("covid-19.txt","r")
     righe = file.readlines()
     file.close
     genoma = ""
